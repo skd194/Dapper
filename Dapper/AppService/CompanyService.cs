@@ -1,6 +1,6 @@
 ﻿using Dapper.AppService.RespoitoryAbstractions;
-using Dapper.Infrastructure.Repository;
 using Dapper.Models;
+using DDDUsingDapper.Infrastructure.Repository;
 
 namespace Dapper.AppService
 {
@@ -9,10 +9,21 @@ namespace Dapper.AppService
         private readonly ICompanyRepository _companyRepository;
         public CompanyService()
         {
-            _companyRepository = new CompanyRepository();
+            //_companyRepository = new CompanyRepositoryUsingEF();
+            _companyRepository = new CompanyRepositoryUsingDapper();
         }
 
-        public void Create(
+        public IReadOnlyCollection<Company> Get()
+        {
+            return _companyRepository.GetAll(); 
+        }
+
+        public Company Get(int id)
+        {
+            return _companyRepository.Find(id);
+        }
+
+        public int Create(
             string name, 
             string address, 
             string city, 
@@ -20,9 +31,17 @@ namespace Dapper.AppService
             string postalCode)  
         {
             var company = Company.Create(name, address, city, state, postalCode);
-            _companyRepository.Create(company);
+            return _companyRepository.Add(company);
         }
 
+        public Company Update(Company company)
+        {
+            return _companyRepository.Update(company);
+        }
 
+        public void Delete(int id)
+        {
+            _companyRepository.Remove(id);
+        }
     }
 }

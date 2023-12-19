@@ -14,7 +14,7 @@
         {
         }
 
-        private Company(
+        public Company(
             int companyId,
             string name,
             string address,
@@ -50,6 +50,18 @@
             City = city;
             State = state;
             PostalCode = postalCode;
+        }
+
+
+        public override string ToString()
+        {
+            return $"{{" +
+                        $"Name: {Name}, " +
+                        $"Address: {Address}, " +
+                        $"City: {City}, " +
+                        $"State: {State}, " +
+                        $"PostalCode: {PostalCode} " +
+                    $"}}";
         }
     }
 }

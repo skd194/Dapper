@@ -1,15 +1,16 @@
 ﻿using Dapper.Models;
+using DDDUsingDapper.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace Dapper.Infrastructure.Data
 {
     public class ApplicationDbContext : DbContext
     {
-        private const string ConnectionString = "Server=DESKTOP-845U4LI;Database=Dapper;Trusted_Connection=True;MultipleActiveResultSets=true;";
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConnectionString);
+            optionsBuilder.UseSqlServer(Configuration.ConnectionString);
         }
 
         public DbSet<Company> Companies { get; set; }

@@ -4,6 +4,10 @@ namespace Dapper.AppService.RespoitoryAbstractions
 {
     public interface ICompanyRepository
     {
-        void Create(Company company);
+        Company Find(int id);
+        IReadOnlyCollection<Company> GetAll();
+        int Add(Company company);
+        void Remove(int id);
+        public Company Update(Company company);
     }
 }
