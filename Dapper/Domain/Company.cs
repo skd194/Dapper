@@ -1,5 +1,8 @@
-﻿namespace Dapper.Models
+﻿using Dapper.Contrib.Extensions;
+
+namespace Dapper.Models
 {
+    [Table("Companies")]
     public class Company
     {
         public static Company Create(
@@ -10,7 +13,7 @@
             string postalCode) => new Company(0, name, address, city, state, postalCode);
 
 
-        protected Company()
+        public Company()
         {
         }
 
@@ -30,7 +33,7 @@
             PostalCode = postalCode;
         }
 
-
+        [Key]
         public int CompanyId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }

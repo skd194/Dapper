@@ -9,13 +9,13 @@ internal class Program
 
     private static void Main(string[] args)
     {
-        Update();
+        Update(6);
         "Print Item".PrintLine();
         _companySvc.Get(2).PrintLine();
         "Print Collection".PrintLine();
         _companySvc.Get().PrintCollection();
         CreateCompany();
-        Delete();
+        Delete(5);
 
         "Employee".PrintLine();
         UpdateEmployee();
@@ -34,18 +34,18 @@ internal class Program
         _companySvc.Create("Company X", "ABC", "CITY A", "STATE B", "XXX695");
     }
 
-    private static Company Update()
+    private static Company Update(int id)
     {
-        var company = new Company(4, "Company 10", "Updated WillWalkers", "UpC", "UpS", "UpPos");
+        var company = new Company(id, "Company 10", "Updated WillWalkers", "UpC", "UpS", "UpPos");
         
         var updatedCompany = _companySvc.Update(company);
 
         return updatedCompany;
     }
 
-    public static void Delete()
+    public static void Delete(int id)
     {
-        _companySvc.Delete(4);
+        _companySvc.Delete(id);
     }
 
 
