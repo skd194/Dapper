@@ -10,7 +10,9 @@ namespace Dapper.AppService
         public CompanyService()
         {
             //_companyRepository = new CompanyRepositoryUsingEF();
-            _companyRepository = new CompanyRepositoryUsingDapper();
+            //_companyRepository = new CompanyRepositoryUsingDapper();
+            //_companyRepository = new CompanyRepositoryUsingDapperSP();
+            _companyRepository = new CompanyRepositoryUsingDapperContrib();
         }
 
         public IReadOnlyCollection<Company> Get()

@@ -10,13 +10,12 @@ internal class Program
     private static void Main(string[] args)
     {
         Update();
-
         "Print Item".PrintLine();
         _companySvc.Get(2).PrintLine();
         "Print Collection".PrintLine();
         _companySvc.Get().PrintCollection();
-        //CreateCompany();
-        //Delete();
+        CreateCompany();
+        Delete();
 
         "Employee".PrintLine();
         UpdateEmployee();
@@ -37,7 +36,7 @@ internal class Program
 
     private static Company Update()
     {
-        var company = new Company(1, "Company 10", "Updated WillWalkers", "UpC", "UpS", "UpPos");
+        var company = new Company(4, "Company 10", "Updated WillWalkers", "UpC", "UpS", "UpPos");
         
         var updatedCompany = _companySvc.Update(company);
 
@@ -46,7 +45,7 @@ internal class Program
 
     public static void Delete()
     {
-        _companySvc.Delete(3);
+        _companySvc.Delete(4);
     }
 
 
