@@ -17,6 +17,9 @@ namespace Dapper.Infrastructure.Data
  
         protected override void OnModelCreating(ModelBuilder builder)
         {
+
+            builder.Entity<Company>().Ignore(t => t.Employees);
+
             builder.Entity<Employee>()
                 .HasOne(c => c.Company)
                 .WithMany()

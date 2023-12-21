@@ -1,4 +1,5 @@
 ﻿using Dapper.Contrib.Extensions;
+using DDDUsingDapper.Domain;
 
 namespace Dapper.Models
 {
@@ -15,6 +16,7 @@ namespace Dapper.Models
 
         public Company()
         {
+            Employees = new HashSet<Employee>();
         }
 
         public Company(
@@ -24,6 +26,7 @@ namespace Dapper.Models
             string city,
             string state,
             string postalCode)
+            : base()
         {
             CompanyId = companyId;
             Name = name;
@@ -40,6 +43,8 @@ namespace Dapper.Models
         public string City { get; set; }
         public string State { get; set; }
         public string PostalCode { get; set; }
+        [Write(false)]
+        public HashSet<Employee> Employees { get; set; }
 
         public void Update(
             string name,
@@ -64,7 +69,10 @@ namespace Dapper.Models
                         $"City: {City}, " +
                         $"State: {State}, " +
                         $"PostalCode: {PostalCode} " +
+                        $"Employees: {Employees.ToStringCollection()}" +
                     $"}}";
         }
+
+        
     }
 }

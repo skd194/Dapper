@@ -14,4 +14,14 @@ public static class Extensions
             Console.WriteLine(item);
         }
     }
+
+    public static string ToStringCollection<T>(this IEnumerable<T> source)
+    {
+        // use string builder here
+        var g = source?.Aggregate(string.Empty, (result, next) =>
+        {
+            return result + next;
+        });
+        return $"[ {g} ]";
+    }
 }
